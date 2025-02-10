@@ -1,46 +1,41 @@
-"use client";
-import React from 'react'
+'use client';
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
 
-const navbar = () => {
-    const [isOpen, setIsOpen] = useState(false);
+const Navbar = () => {
+  const [active, setActive] = useState("Home");
+
   return (
-    <nav className="bg-[#0A84FF] text-white">
-    <div className="container mx-auto flex justify-between items-center p-4">
-      {/* Logo */}
-      <div className="text-2xl font-bold">
-        <a href="/">TechFix Hub</a>
+    <nav className="bg-gray-900 text-white p-4">
+      <div className="container mx-auto flex justify-between items-center px-32">
+        {/* Logo */}
+        <div className="flex items-center space-x-2">
+          <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-2 rounded-full">
+          </div>
+          <span className="text-xl font-semibold">Flowbite</span>
+        </div>
+
+        {/* Navigation Links */}
+        <ul className="flex space-x-6">
+          {["Home", "About", "Services", "Contact"].map((item) => (
+            <li
+              key={item}
+              className={`cursor-pointer ${
+                active === item ? "text-blue-400" : "hover:text-gray-400"
+              }`}
+              onClick={() => setActive(item)}
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+
+        {/* Get Started Button */}
+        <button className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg text-white">
+          Get started
+        </button>
       </div>
+    </nav>
+  );
+};
 
-      {/* Desktop Menu */}
-      <div className="hidden md:flex space-x-6 text-lg">
-        <a href="/" className="hover:text-gray-200 transition duration-300">Home</a>
-        <a href="/services" className="hover:text-gray-200 transition duration-300">Services</a>
-        <a href="/about" className="hover:text-gray-200 transition duration-300">About Us</a>
-        <a href="/contact" className="hover:text-gray-200 transition duration-300">Contact Us</a>
-      </div>
-
-      {/* Mobile Menu Button */}
-      <button 
-        className="md:hidden focus:outline-none transition duration-300" 
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        {isOpen ? <X size={28} className="transition-transform transform rotate-180 duration-300" /> : <Menu size={28} />}
-      </button>
-    </div>
-
-    {/* Mobile Menu with Smooth Slide Animation */}
-    <div className={`md:hidden bg-[#007BFF] overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? "max-h-60 opacity-100" : "max-h-0 opacity-0"}`}>
-      <div className="p-4 space-y-4">
-        <a href="/" className="block text-lg hover:text-gray-300 transition duration-300">Home</a>
-        <a href="/services" className="block text-lg hover:text-gray-300 transition duration-300">Services</a>
-        <a href="/about" className="block text-lg hover:text-gray-300 transition duration-300">About Us</a>
-        <a href="/contact" className="block text-lg hover:text-gray-300 transition duration-300">Contact Us</a>
-      </div>
-    </div>
-  </nav>
-  )
-}
-
-export default navbar
+export default Navbar;

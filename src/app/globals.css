@@ -13,3 +13,12 @@ body {
   background: var(--background);
   font-family: var(--font-poppins);
 }
+
+.carousel-container {
+  height: 50vh;
+}
+
+.carousel-container .carousel .slide img {
+  height: 100%;
+  object-fit: cover;
+}

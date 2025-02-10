@@ -1,9 +1,10 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import Footer from "./components/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["300", "400", "600", "700"], // Add only the weights you need
+  weight: ["100", "200", "300", "400", "600", "700"], //  weights to load 
   variable: "--font-poppins", // Optional for global CSS usage
 });
 
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${poppins.variable} antialiased`}>
         {children}
+        <Footer/>
       </body>
     </html>
   );
