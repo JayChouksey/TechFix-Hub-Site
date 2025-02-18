@@ -1,164 +1,385 @@
-import React from 'react'
-import NavBar from "../components/Navbar";
+'use client';
+import { useState } from 'react';
+import Head from 'next/head';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock, FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
-const page = () => {
+export default function Contact() {
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    service: '',
+    message: '',
+  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Simulate form submission
+    setTimeout(() => {
+      setIsSubmitted(true);
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        service: '',
+        message: '',
+      });
+      // Reset submission status after 5 seconds
+      setTimeout(() => setIsSubmitted(false), 5000);
+    }, 1000);
+  };
+
+
   return (
-    <>
-      <NavBar />
-      <section className="py-24">
-  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div className="grid lg:grid-cols-2 grid-cols-1">
-      <div className="lg:mb-0 mb-10">
-        <div className="group w-full h-full">
-          <div className="relative h-full">
-            <img
-              src="https://pagedone.io/asset/uploads/1696488602.png"
-              alt="ContactUs tailwind section"
-              className="w-full h-full lg:rounded-l-2xl rounded-2xl bg-blend-multiply bg-indigo-700 object-cover"
-            />
-            <h1 className="font-manrope text-white text-4xl font-bold leading-10 absolute top-11 left-11">
-              Contact us
-            </h1>
-            <div className="absolute bottom-0 w-full lg:p-11 p-5">
-              <div className="bg-white rounded-lg p-6 block">
-                <a href="javascript:;" className="flex items-center mb-6">
-                  <svg
-                    width={30}
-                    height={30}
-                    viewBox="0 0 30 30"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+    <div className="min-h-screen bg-gray-50">
+      <Head>
+        <title>Contact Us - TechFix Pro</title>
+        <meta name="description" content="Contact TechFix Pro for laptop repairs, phone fixes, and affordable refurbished laptops. Get in touch with our expert team today!" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      {/* Navbar - Same as in main page */}
+      <Navbar/>
+
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 bg-gradient-to-r from-blue-900 to-blue-700 text-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">Contact Us</h1>
+            <p className="text-xl md:text-2xl">Get in touch with our expert team for all your tech repair needs. We're here to help!</p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Contact Information Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            {/* Contact Form */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="bg-gray-50 rounded-xl p-8 shadow-sm"
+            >
+              <h2 className="text-3xl font-bold text-gray-800 mb-6">Send Us a Message</h2>
+              {isSubmitted ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="bg-green-50 border border-green-200 text-green-800 rounded-lg p-6 text-center"
+                >
+                  <h3 className="text-xl font-semibold mb-2">Thank You!</h3>
+                  <p>Your message has been sent successfully. We'll get back to you as soon as possible.</p>
+                </motion.div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label htmlFor="name" className="block text-gray-700 font-medium mb-2">Your Name</label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                        placeholder="John Doe"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block text-gray-700 font-medium mb-2">Email Address</label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                        placeholder="john@example.com"
+                      />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label htmlFor="phone" className="block text-gray-700 font-medium mb-2">Phone Number</label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                        placeholder="(555) 123-4567"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="service" className="block text-gray-700 font-medium mb-2">Service Needed</label>
+                      <select
+                        id="service"
+                        name="service"
+                        value={formData.service}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                      >
+                        <option value="" disabled>Select a service</option>
+                        <option value="laptop-repair">Laptop Repair</option>
+                        <option value="phone-repair">Phone Repair</option>
+                        <option value="camera-repair">Camera Repair</option>
+                        <option value="buy-used-laptop">Buy Used Laptop</option>
+                        <option value="tech-support">Tech Support</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div>
+                    <label htmlFor="message" className="block text-gray-700 font-medium mb-2">Your Message</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                      rows="5"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                      placeholder="Tell us about your issue or inquiry..."
+                    ></textarea>
+                  </div>
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    type="submit"
+                    className="bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 transition-colors w-full md:w-auto"
                   >
-                    <path
-                      d="M22.3092 18.3098C22.0157 18.198 21.8689 18.1421 21.7145 18.1287C21.56 18.1154 21.4058 18.1453 21.0975 18.205L17.8126 18.8416C17.4392 18.9139 17.2525 18.9501 17.0616 18.9206C16.8707 18.891 16.7141 18.8058 16.4008 18.6353C13.8644 17.2551 12.1853 15.6617 11.1192 13.3695C10.9964 13.1055 10.935 12.9735 10.9133 12.8017C10.8917 12.6298 10.9218 12.4684 10.982 12.1456L11.6196 8.72559C11.6759 8.42342 11.7041 8.27233 11.6908 8.12115C11.6775 7.96998 11.6234 7.82612 11.5153 7.5384L10.6314 5.18758C10.37 4.49217 10.2392 4.14447 9.95437 3.94723C9.6695 3.75 9.29804 3.75 8.5551 3.75H5.85778C4.58478 3.75 3.58264 4.8018 3.77336 6.06012C4.24735 9.20085 5.64674 14.8966 9.73544 18.9853C14.0295 23.2794 20.2151 25.1426 23.6187 25.884C24.9335 26.1696 26.0993 25.1448 26.0993 23.7985V21.2824C26.0993 20.5428 26.0993 20.173 25.9034 19.8888C25.7076 19.6046 25.362 19.4729 24.6708 19.2096L22.3092 18.3098Z"
-                      stroke="#4F46E5"
-                      strokeWidth={2}
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  <h5 className="text-black text-base font-normal leading-6 ml-5">
-                    470-601-1911
-                  </h5>
-                </a>
-                <a href="javascript:;" className="flex items-center mb-6">
-                  <svg
-                    width={30}
-                    height={30}
-                    viewBox="0 0 30 30"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+                    Send Message
+                  </motion.button>
+                </form>
+              )}
+            </motion.div>
+
+            {/* Contact Info and Map */}
+            <div>
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true, margin: "-100px" }}
+              >
+                <h2 className="text-3xl font-bold text-gray-800 mb-6">Contact Information</h2>
+                <div className="space-y-8 mb-12">
+                  <div className="flex items-start">
+                    <div className="bg-blue-600 text-white p-3 rounded-full mr-4">
+                      <FaMapMarkerAlt size={20} />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-800 mb-2">Our Location</h3>
+                      <p className="text-gray-600">123 Tech Street, Downtown, NY 10001</p>
+                      <Link href="https://goo.gl/maps/YourMapLink" target="_blank" rel="noopener noreferrer">
+                        <span className="text-blue-600 hover:text-blue-800 font-medium mt-2 inline-block">
+                          Get Directions →
+                        </span>
+                      </Link>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="bg-blue-600 text-white p-3 rounded-full mr-4">
+                      <FaPhone size={20} />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-800 mb-2">Phone Number</h3>
+                      <p className="text-gray-600">Main: (555) 123-4567</p>
+                      <p className="text-gray-600">Support: (555) 987-6543</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="bg-blue-600 text-white p-3 rounded-full mr-4">
+                      <FaEnvelope size={20} />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-800 mb-2">Email</h3>
+                      <p className="text-gray-600">contact@techfixpro.com</p>
+                      <p className="text-gray-600">support@techfixpro.com</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="bg-blue-600 text-white p-3 rounded-full mr-4">
+                      <FaClock size={20} />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-800 mb-2">Business Hours</h3>
+                      <p className="text-gray-600">Monday - Friday: 9:00 AM - 7:00 PM</p>
+                      <p className="text-gray-600">Saturday: 10:00 AM - 5:00 PM</p>
+                      <p className="text-gray-600">Sunday: Closed</p>
+                    </div>
+                  </div>
+                </div>
+
+                <h3 className="text-xl font-semibold text-gray-800 mb-4">Connect With Us</h3>
+                <div className="flex space-x-4 mb-8">
+                  <a
+                    href="#"
+                    className="bg-gray-200 text-gray-700 p-3 rounded-full hover:bg-blue-600 hover:text-white transition-colors"
                   >
-                    <path
-                      d="M2.81501 8.75L10.1985 13.6191C12.8358 15.2015 14.1544 15.9927 15.6032 15.9582C17.0519 15.9237 18.3315 15.0707 20.8905 13.3647L27.185 8.75M12.5 25H17.5C22.214 25 24.5711 25 26.0355 23.5355C27.5 22.0711 27.5 19.714 27.5 15C27.5 10.286 27.5 7.92893 26.0355 6.46447C24.5711 5 22.214 5 17.5 5H12.5C7.78595 5 5.42893 5 3.96447 6.46447C2.5 7.92893 2.5 10.286 2.5 15C2.5 19.714 2.5 22.0711 3.96447 23.5355C5.42893 25 7.78595 25 12.5 25Z"
-                      stroke="#4F46E5"
-                      strokeWidth={2}
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                  <h5 className="text-black text-base font-normal leading-6 ml-5">
-                    Pagedone1234@gmail.com
-                  </h5>
-                </a>
-                <a href="javascript:;" className="flex items-center">
-                  <svg
-                    width={30}
-                    height={30}
-                    viewBox="0 0 30 30"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+                    <FaFacebookF size={20} />
+                  </a>
+                  <a
+                    href="#"
+                    className="bg-gray-200 text-gray-700 p-3 rounded-full hover:bg-blue-400 hover:text-white transition-colors"
                   >
-                    <path
-                      d="M25 12.9169C25 17.716 21.1939 21.5832 18.2779 24.9828C16.8385 26.6609 16.1188 27.5 15 27.5C13.8812 27.5 13.1615 26.6609 11.7221 24.9828C8.80612 21.5832 5 17.716 5 12.9169C5 10.1542 6.05357 7.5046 7.92893 5.55105C9.8043 3.59749 12.3478 2.5 15 2.5C17.6522 2.5 20.1957 3.59749 22.0711 5.55105C23.9464 7.5046 25 10.1542 25 12.9169Z"
-                      stroke="#4F46E5"
-                      strokeWidth={2}
-                    />
-                    <path
-                      d="M17.5 11.6148C17.5 13.0531 16.3807 14.219 15 14.219C13.6193 14.219 12.5 13.0531 12.5 11.6148C12.5 10.1765 13.6193 9.01058 15 9.01058C16.3807 9.01058 17.5 10.1765 17.5 11.6148Z"
-                      stroke="#4F46E5"
-                      strokeWidth={2}
-                    />
-                  </svg>
-                  <h5 className="text-black text-base font-normal leading-6 ml-5">
-                    654 Sycamore Avenue, Meadowville, WA 76543
-                  </h5>
-                </a>
-              </div>
+                    <FaTwitter size={20} />
+                  </a>
+                  <a
+                    href="#"
+                    className="bg-gray-200 text-gray-700 p-3 rounded-full hover:bg-pink-600 hover:text-white transition-colors"
+                  >
+                    <FaInstagram size={20} />
+                  </a>
+                  <a
+                    href="#"
+                    className="bg-gray-200 text-gray-700 p-3 rounded-full hover:bg-blue-800 hover:text-white transition-colors"
+                  >
+                    <FaLinkedinIn size={20} />
+                  </a>
+                </div>
+
+                <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-lg">
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.2219901290355!2d-74.00101648459473!3d40.71066447933185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a329a583827%3A0xc2f8c8ef89c129c!2sTech%20Repair%20Shop!5e0!3m2!1sen!2sus!4v1592501132177!5m2!1sen!2sus" 
+                    width="600" 
+                    height="450" 
+                    style={{ border: 0 }} 
+                    allowFullScreen="" 
+                    loading="lazy"
+                    title="Our location"
+                    className="w-full h-full rounded-lg"
+                  ></iframe>
+                </div>
+              </motion.div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="bg-gray-50 p-5 lg:p-11 lg:rounded-r-2xl rounded-2xl">
-        <h2 className="text-indigo-600 font-manrope text-4xl font-semibold leading-10 mb-11">
-          Send Us A Message
-        </h2>
-        <input
-          type="text"
-          className="w-full h-12 text-gray-600 placeholder-gray-400  shadow-sm bg-transparent text-lg font-normal leading-7 rounded-full border border-gray-200 focus:outline-none pl-4 mb-10"
-          placeholder="Name"
-        />
-        <input
-          type="text"
-          className="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-full border border-gray-200 focus:outline-none pl-4 mb-10"
-          placeholder="Email"
-        />
-        <input
-          type="text"
-          className="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-full border border-gray-200 focus:outline-none pl-4 mb-10"
-          placeholder="Phone"
-        />
-        <div className="mb-10">
-          <h4 className="text-gray-500 text-lg font-normal leading-7 mb-4">
-            Preferred method of communication
-          </h4>
-          <div className="flex">
-            <div className="flex items-center mr-11">
-              <input
-                id="radio-group-1"
-                type="radio"
-                name="radio-group"
-                className="hidden checked:bg-no-repeat checked:bg-center checked:border-indigo-500 checked:bg-indigo-100"
-              />
-              <label
-                htmlFor="radio-group-1"
-                className="flex items-center cursor-pointer text-gray-500 text-base font-normal leading-6"
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">Find answers to our most commonly asked questions.</p>
+          </motion.div>
+
+          <div className="max-w-3xl mx-auto">
+            {[
+              {
+                question: 'How long does a typical repair take?',
+                answer: 'Most repairs are completed within 24-48 hours, depending on the complexity of the issue and parts availability. We always provide an estimated timeline when you drop off your device.'
+              },
+              {
+                question: 'Do I need an appointment for repairs?',
+                answer: 'No appointment is necessary for drop-offs. Simply visit our shop during our business hours, and our team will assist you. However, if you prefer a scheduled time, you can call ahead or use our online scheduling system.'
+              },
+              {
+                question: 'What warranty do you offer on repairs?',
+                answer: 'We provide a 90-day warranty on all repairs, covering both parts and labor. For certain specific repairs, extended warranty options are available. Our refurbished laptops come with a 6-month warranty.'
+              },
+              {
+                question: 'Can I get a quote before committing to a repair?',
+                answer: 'Absolutely! We provide free diagnostics and quotes before proceeding with any repairs. There is no obligation, and we will only move forward once you approve the estimated cost.'
+              },
+              {
+                question: 'Do you offer emergency repair services?',
+                answer: 'Yes, we offer emergency repair services for urgent cases. Please call our emergency line at (555) 987-6543. Note that additional fees may apply for after-hours services.'
+              },
+            ].map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true, margin: "-20px" }}
+                className="mb-6 last:mb-0"
               >
-                <span className="border border-gray-300 rounded-full mr-2 w-4 h-4  ml-2 " />{" "}
-                Email
-              </label>
-            </div>
-            <div className="flex items-center">
-              <input
-                id="radio-group-2"
-                type="radio"
-                name="radio-group"
-                className="hidden checked:bg-no-repeat checked:bg-center checked:border-indigo-500 checked:bg-indigo-100"
-              />
-              <label
-                htmlFor="radio-group-2"
-                className="flex items-center cursor-pointer text-gray-500 text-base font-normal leading-6"
-              >
-                <span className="border border-gray-300  rounded-full mr-2 w-4 h-4  ml-2 " />{" "}
-                Phone
-              </label>
-            </div>
+                <div className="bg-white rounded-lg shadow-sm p-6">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-3">{faq.question}</h3>
+                  <p className="text-gray-600">{faq.answer}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true, margin: "-50px" }}
+            className="text-center mt-12"
+          >
+            <p className="text-lg text-gray-700 mb-6">Didn't find what you're looking for?</p>
+            <Link href="/faq">
+              <span className="text-blue-600 font-medium hover:text-blue-800 transition-colors">
+                View All FAQs →
+              </span>
+            </Link>
+          </motion.div>
         </div>
-        <input
-          type="text"
-          className="w-full h-12 text-gray-600 placeholder-gray-400 bg-transparent text-lg shadow-sm font-normal leading-7 rounded-full border border-gray-200 focus:outline-none pl-4 mb-10"
-          placeholder="Message"
-        />
-        <button className="w-full h-12 text-white text-base font-semibold leading-6 rounded-full transition-all duration-700 hover:bg-indigo-800 bg-indigo-600 shadow-sm">
-          Send
-        </button>
-      </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 bg-blue-700 text-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Need a Quick Response?</h2>
+            <p className="text-xl mb-8">Call us now for immediate assistance with your tech issues!</p>
+            <a href="tel:+15551234567" className="inline-block">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-white text-blue-700 px-8 py-3 rounded-full text-lg font-medium hover:bg-gray-100 transition-colors flex items-center"
+              >
+                <FaPhone className="mr-2" />
+                (555) 123-4567
+              </motion.button>
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
+    {/* Footer */}
+    <Footer/>
     </div>
-  </div>
-</section>
-
-    </>
-  )
+  );
 }
-
-export default page
