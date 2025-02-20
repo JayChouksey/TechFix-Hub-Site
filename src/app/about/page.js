@@ -3,8 +3,8 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Navbar from '../components/Navbar.jsx';
+import Footer from '../components/Footer.jsx';
 
 // Component for animating sections into view
 const AnimatedSection = ({ children, delay = 0 }) => {
