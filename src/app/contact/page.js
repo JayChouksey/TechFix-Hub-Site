@@ -4,8 +4,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock, FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
-import Navbar from '@/app/components/Navbar';
-import Footer from '@/app/components/Footer';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 export default function Contact() {
 
@@ -53,7 +53,7 @@ export default function Contact() {
       </Head>
 
       {/* Navbar - Same as in main page */}
-      <Navbar/>
+      <Navbar />
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 bg-gradient-to-r from-blue-900 to-blue-700 text-white">
@@ -265,12 +265,12 @@ export default function Contact() {
                 </div>
 
                 <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-lg">
-                  <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.2219901290355!2d-74.00101648459473!3d40.71066447933185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a329a583827%3A0xc2f8c8ef89c129c!2sTech%20Repair%20Shop!5e0!3m2!1sen!2sus!4v1592501132177!5m2!1sen!2sus" 
-                    width="600" 
-                    height="450" 
-                    style={{ border: 0 }} 
-                    allowFullScreen="" 
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.2219901290355!2d-74.00101648459473!3d40.71066447933185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a329a583827%3A0xc2f8c8ef89c129c!2sTech%20Repair%20Shop!5e0!3m2!1sen!2sus!4v1592501132177!5m2!1sen!2sus"
+                    width="600"
+                    height="450"
+                    style={{ border: 0 }}
+                    allowFullScreen=""
                     loading="lazy"
                     title="Our location"
                     className="w-full h-full rounded-lg"
@@ -378,8 +378,8 @@ export default function Contact() {
         </div>
       </section>
 
-    {/* Footer */}
-    <Footer/>
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

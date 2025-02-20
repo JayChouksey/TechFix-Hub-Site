@@ -3,8 +3,8 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-import Navbar from '@/app/components/Navbar';
-import Footer from '@/app/components/Footer';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 // Component for animating sections into view
 const AnimatedSection = ({ children, delay = 0 }) => {
@@ -93,18 +93,18 @@ export default function About() {
 
             {/* Hero section */}
             <section className="pt-32 pb-20 bg-gradient-to-r from-blue-900 to-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">About TechFix Pro</h1>
-            <p className="text-xl md:text-2xl">Your trusted partner for all tech repair needs since 2010. We're passionate about extending the life of your devices through quality repairs and refurbishment.</p>
-          </motion.div>
-        </div>
-      </section>
+                <div className="container mx-auto px-4">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="max-w-3xl mx-auto text-center"
+                    >
+                        <h1 className="text-4xl md:text-6xl font-bold mb-6">About TechFix Pro</h1>
+                        <p className="text-xl md:text-2xl">Your trusted partner for all tech repair needs since 2010. We're passionate about extending the life of your devices through quality repairs and refurbishment.</p>
+                    </motion.div>
+                </div>
+            </section>
 
             {/* Mission section */}
             <section className="py-16 bg-white">
@@ -408,7 +408,7 @@ export default function About() {
             </section>
 
             {/* Footer */}
-            <Footer/>
+            <Footer />
         </div>
     );
 }

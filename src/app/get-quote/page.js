@@ -2,8 +2,8 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
-import Navbar from '@/app/components/Navbar';
-import Footer from '@/app/components/Footer';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import { FaPaperPlane, FaTools, FaLaptop, FaMobile, FaCamera } from 'react-icons/fa';
 
 export default function GetQuote() {
@@ -79,7 +79,7 @@ export default function GetQuote() {
               className="bg-white rounded-lg shadow-lg p-8"
             >
               {formSubmitted ? (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   className="text-center py-8"
@@ -128,7 +128,7 @@ export default function GetQuote() {
                         />
                       </div>
                     </div>
-                    
+
                     <div className="mb-6">
                       <label htmlFor="phone" className="block text-gray-700 mb-2">Phone Number</label>
                       <input
@@ -141,7 +141,7 @@ export default function GetQuote() {
                         placeholder="(555) 123-4567"
                       />
                     </div>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                       <div>
                         <label htmlFor="serviceType" className="block text-gray-700 mb-2">Service Type *</label>
@@ -181,7 +181,7 @@ export default function GetQuote() {
                         </select>
                       </div>
                     </div>
-                    
+
                     <div className="mb-8">
                       <label htmlFor="description" className="block text-gray-700 mb-2">Description of Issue *</label>
                       <textarea
@@ -195,7 +195,7 @@ export default function GetQuote() {
                         placeholder="Please describe the issue you're experiencing or the service you need..."
                       ></textarea>
                     </div>
-                    
+
                     <div className="text-center">
                       <motion.button
                         whileHover={{ scale: 1.03 }}
@@ -210,7 +210,7 @@ export default function GetQuote() {
                 </>
               )}
             </motion.div>
-            
+
             {/* Info Section */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
@@ -218,7 +218,7 @@ export default function GetQuote() {
               transition={{ duration: 0.5, delay: 0.4 }}
             >
               <h2 className="text-3xl font-bold text-gray-800 mb-8">What to Expect</h2>
-              
+
               <div className="space-y-8">
                 {[
                   {
@@ -257,7 +257,7 @@ export default function GetQuote() {
                   </motion.div>
                 ))}
               </div>
-              
+
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -275,7 +275,7 @@ export default function GetQuote() {
           </div>
         </div>
       </section>
-      
+
       {/* FAQ Section */}
       <section className="py-16 bg-gray-100">
         <div className="container mx-auto px-4">
@@ -289,7 +289,7 @@ export default function GetQuote() {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">Find answers to common questions about our quote and repair process.</p>
           </motion.div>
-          
+
           <div className="max-w-4xl mx-auto">
             <div className="space-y-6">
               {[
@@ -330,7 +330,7 @@ export default function GetQuote() {
           </div>
         </div>
       </section>
-      
+
       {/* CTA Section */}
       <section className="py-16 bg-blue-700 text-white">
         <div className="container mx-auto px-4">

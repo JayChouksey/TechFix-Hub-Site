@@ -6,12 +6,12 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
-import Navbar from '@/app/components/Navbar';
-import Footer from '@/app/components/Footer';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 // Icons
 import { FaTools, FaCheck, FaSearch, FaRegClock } from 'react-icons/fa';
-import { 
+import {
   Camera,
   Computer,
   Shield,
@@ -135,12 +135,12 @@ export default function Services() {
     setIsFilterOpen(false);
   };
 
-  const filteredServices = activeTab === 'all' 
-    ? services 
+  const filteredServices = activeTab === 'all'
+    ? services
     : services.filter(service => {
-        const category = categories.find(cat => cat.services?.includes(service.id));
-        return category?.id === activeTab || service.id === activeTab;
-      });
+      const category = categories.find(cat => cat.services?.includes(service.id));
+      return category?.id === activeTab || service.id === activeTab;
+    });
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -185,16 +185,15 @@ export default function Services() {
             <span>Filter Services</span>
             <ChevronDown className={`transform transition-transform ${isFilterOpen ? 'rotate-180' : ''}`} />
           </button>
-          
+
           {isFilterOpen && (
             <div className="mt-2 bg-white rounded-lg shadow-lg border border-gray-200">
               {categories.map((category) => (
                 <button
                   key={category.id}
                   onClick={() => handleCategorySelect(category.id)}
-                  className={`w-full px-6 py-3 text-left border-b last:border-b-0 ${
-                    activeTab === category.id ? 'bg-blue-50 text-blue-600' : 'text-gray-700'
-                  }`}
+                  className={`w-full px-6 py-3 text-left border-b last:border-b-0 ${activeTab === category.id ? 'bg-blue-50 text-blue-600' : 'text-gray-700'
+                    }`}
                 >
                   {category.label}
                 </button>
@@ -218,11 +217,10 @@ export default function Services() {
               <button
                 key={category.id}
                 onClick={() => setActiveTab(category.id)}
-                className={`px-6 py-3 rounded-full transition-colors ${
-                  activeTab === category.id 
-                    ? 'bg-blue-600 text-white' 
+                className={`px-6 py-3 rounded-full transition-colors ${activeTab === category.id
+                    ? 'bg-blue-600 text-white'
                     : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
-                }`}
+                  }`}
               >
                 {category.label}
               </button>
@@ -290,8 +288,8 @@ export default function Services() {
         </div>
       </section>
 
-            {/* Process Section */}
-            <section className="py-20 bg-white">
+      {/* Process Section */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -306,21 +304,21 @@ export default function Services() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { 
-                icon: <FaSearch size={32} />, 
-                title: 'Diagnose', 
+              {
+                icon: <FaSearch size={32} />,
+                title: 'Diagnose',
                 description: 'We thoroughly inspect your device to identify all issues. Our diagnostic fee is waived when you proceed with repairs.',
                 step: '01'
               },
-              { 
-                icon: <FaTools size={32} />, 
-                title: 'Repair', 
+              {
+                icon: <FaTools size={32} />,
+                title: 'Repair',
                 description: 'Our expert technicians fix your device using quality parts and following best practices to ensure lasting repairs.',
                 step: '02'
               },
-              { 
-                icon: <FaCheck size={32} />, 
-                title: 'Quality Check', 
+              {
+                icon: <FaCheck size={32} />,
+                title: 'Quality Check',
                 description: 'Every repaired device undergoes rigorous testing to ensure everything works perfectly before return.',
                 step: '03'
               },
@@ -361,25 +359,25 @@ export default function Services() {
 
           <div className="max-w-3xl mx-auto space-y-6">
             {[
-              { 
-                question: 'How long do repairs typically take?', 
-                answer: 'Most repairs are completed within 1-3 business days, depending on the type of repair and parts availability. Some simple repairs like screen replacements for common phone models can be done the same day.' 
+              {
+                question: 'How long do repairs typically take?',
+                answer: 'Most repairs are completed within 1-3 business days, depending on the type of repair and parts availability. Some simple repairs like screen replacements for common phone models can be done the same day.'
               },
-              { 
-                question: 'Do you offer a warranty on repairs?', 
-                answer: 'Yes, all our repairs come with a 90-day warranty covering parts and labor. Our refurbished laptops come with a 6-month warranty.' 
+              {
+                question: 'Do you offer a warranty on repairs?',
+                answer: 'Yes, all our repairs come with a 90-day warranty covering parts and labor. Our refurbished laptops come with a 6-month warranty.'
               },
-              { 
-                question: 'What brands do you repair?', 
-                answer: 'We repair most major brands including Apple, Samsung, Dell, HP, Lenovo, ASUS, Sony, Canon, Nikon, and many more. If you don\'t see your brand listed, please contact us to check.' 
+              {
+                question: 'What brands do you repair?',
+                answer: 'We repair most major brands including Apple, Samsung, Dell, HP, Lenovo, ASUS, Sony, Canon, Nikon, and many more. If you don\'t see your brand listed, please contact us to check.'
               },
-              { 
-                question: 'Do I need to make an appointment?', 
-                answer: 'Walk-ins are welcome for diagnostics and simple repairs. For complex repairs or tech support services, we recommend scheduling an appointment to ensure we can accommodate you promptly.' 
+              {
+                question: 'Do I need to make an appointment?',
+                answer: 'Walk-ins are welcome for diagnostics and simple repairs. For complex repairs or tech support services, we recommend scheduling an appointment to ensure we can accommodate you promptly.'
               },
-              { 
-                question: 'How do I know if my device is worth repairing?', 
-                answer: 'During our diagnostic process, we\'ll provide an honest assessment of your device and repair costs. If we believe a repair isn\'t cost-effective, we\'ll let you know and can recommend replacement options from our refurbished inventory.' 
+              {
+                question: 'How do I know if my device is worth repairing?',
+                answer: 'During our diagnostic process, we\'ll provide an honest assessment of your device and repair costs. If we believe a repair isn\'t cost-effective, we\'ll let you know and can recommend replacement options from our refurbished inventory.'
               },
             ].map((faq, index) => (
               <motion.div

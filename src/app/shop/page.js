@@ -5,8 +5,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { FaFilter, FaSearch, FaLaptop, FaApple, FaWindows, FaAngleDown } from 'react-icons/fa';
-import Navbar from '@/app/components/Navbar';
-import Footer from '@/app/components/Footer';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 // Sample product data
 const products = [
@@ -245,7 +245,7 @@ export default function Shop() {
       <Navbar />
 
       {/* Hero Section */}
-      <motion.section 
+      <motion.section
         className="relative h-80 flex items-center justify-center bg-gradient-to-r from-blue-800 to-blue-600 text-white"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -289,7 +289,7 @@ export default function Shop() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Filters for larger screens */}
-            <motion.div 
+            <motion.div
               className="hidden lg:block w-64 flex-shrink-0"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -298,7 +298,7 @@ export default function Shop() {
               <div className="bg-white rounded-lg shadow-sm p-6">
                 <div className="flex justify-between items-center mb-4">
                   <h2 className="text-lg font-semibold text-gray-800">Filters</h2>
-                  <button 
+                  <button
                     onClick={resetFilters}
                     className="text-blue-600 hover:text-blue-800 text-sm font-medium"
                   >
@@ -425,7 +425,7 @@ export default function Shop() {
 
                 {/* Mobile filters panel */}
                 {isFilterOpen && (
-                  <motion.div 
+                  <motion.div
                     className="bg-white rounded-lg shadow-md mt-2 p-4"
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
@@ -435,7 +435,7 @@ export default function Shop() {
                     {/* Mobile filter content similar to desktop but more compact */}
                     <div className="flex justify-between items-center mb-4">
                       <h2 className="text-lg font-semibold text-gray-800">Filters</h2>
-                      <button 
+                      <button
                         onClick={resetFilters}
                         className="text-blue-600 hover:text-blue-800 text-sm font-medium"
                       >
@@ -597,9 +597,8 @@ export default function Shop() {
                                 {[...Array(5)].map((_, i) => (
                                   <svg
                                     key={i}
-                                    className={`w-4 h-4 ${
-                                      i < Math.floor(product.rating) ? 'text-yellow-400' : 'text-gray-300'
-                                    }`}
+                                    className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'text-yellow-400' : 'text-gray-300'
+                                      }`}
                                     fill="currentColor"
                                     viewBox="0 0 20 20"
                                   >
