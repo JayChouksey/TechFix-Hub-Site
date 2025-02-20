@@ -3,8 +3,8 @@ import Image from 'next/image';
 import Head from 'next/head';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import Navbar from './components/Navbar';
-
+import Navbar from '@/app/components/Navbar';
+import Footer from '@/app/components/Footer';
 // Icons
 import { FaCheck } from 'react-icons/fa';
 import { 
@@ -18,7 +18,7 @@ import {
   Clock,
   Cog
 } from 'lucide-react';
-import Footer from './components/Footer';
+
 
 export default function Home() {
   // Services data

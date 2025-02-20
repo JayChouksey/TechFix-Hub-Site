@@ -6,8 +6,8 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Navbar from '@/app/components/Navbar';
+import Footer from '@/app/components/Footer';
 
 // Icons
 import { FaTools, FaCheck, FaSearch, FaRegClock } from 'react-icons/fa';

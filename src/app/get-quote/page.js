@@ -2,8 +2,8 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Navbar from '@/app/components/Navbar';
+import Footer from '@/app/components/Footer';
 import { FaPaperPlane, FaTools, FaLaptop, FaMobile, FaCamera } from 'react-icons/fa';
 
 export default function GetQuote() {
