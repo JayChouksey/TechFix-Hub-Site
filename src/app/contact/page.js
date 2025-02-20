@@ -195,7 +195,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-gray-800 mb-2">Our Location</h3>
-                      <p className="text-gray-600">123 Tech Street, Downtown, NY 10001</p>
+                      <p className="text-gray-600">Shop No. 23, Aakash Tower, 1st Road, Sriprastha, Nalasopara West, Palghar, Maharashtra - 401203</p>
                       <Link href="https://goo.gl/maps/YourMapLink" target="_blank" rel="noopener noreferrer">
                         <span className="text-blue-600 hover:text-blue-800 font-medium mt-2 inline-block">
                           Get Directions →
@@ -209,8 +209,8 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-gray-800 mb-2">Phone Number</h3>
-                      <p className="text-gray-600">Main: (555) 123-4567</p>
-                      <p className="text-gray-600">Support: (555) 987-6543</p>
+                      <p className="text-gray-600">Main: +91 7620765998</p>
+                      <p className="text-gray-600">Support: +91 7620757967</p>
                     </div>
                   </div>
                   <div className="flex items-start">
@@ -316,7 +316,7 @@ export default function Contact() {
               },
               {
                 question: 'Do you offer emergency repair services?',
-                answer: 'Yes, we offer emergency repair services for urgent cases. Please call our emergency line at (555) 987-6543. Note that additional fees may apply for after-hours services.'
+                answer: 'Yes, we offer emergency repair services for urgent cases. Please call our emergency line at +91 7620765998. Note that additional fees may apply for after-hours services.'
               },
             ].map((faq, index) => (
               <motion.div
@@ -342,12 +342,12 @@ export default function Contact() {
             viewport={{ once: true, margin: "-50px" }}
             className="text-center mt-12"
           >
-            <p className="text-lg text-gray-700 mb-6">Didn't find what you're looking for?</p>
+            {/* <p className="text-lg text-gray-700 mb-6">Didn't find what you're looking for?</p>
             <Link href="/faq">
               <span className="text-blue-600 font-medium hover:text-blue-800 transition-colors">
                 View All FAQs →
               </span>
-            </Link>
+            </Link> */}
           </motion.div>
         </div>
       </section>
@@ -371,7 +371,7 @@ export default function Contact() {
                 className="bg-white text-blue-700 px-8 py-3 rounded-full text-lg font-medium hover:bg-gray-100 transition-colors flex items-center"
               >
                 <FaPhone className="mr-2" />
-                (555) 123-4567
+                +91 7620765998
               </motion.button>
             </a>
           </motion.div>

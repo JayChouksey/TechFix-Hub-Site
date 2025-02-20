@@ -4,82 +4,143 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { ChevronDown } from 'lucide-react';
 
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 // Icons
-import { FaLaptop, FaCamera, FaTools, FaHeadset, FaMobile, FaShoppingCart, FaCheck, FaSearch, FaRegClock } from 'react-icons/fa';
+import { FaTools, FaCheck, FaSearch, FaRegClock } from 'react-icons/fa';
+import { 
+  Camera,
+  Computer,
+  Shield,
+  Wifi,
+  HardDrive,
+  Wrench,
+  FileCode,
+  Clock,
+  Cog
+} from 'lucide-react';
 
 export default function Services() {
-
   const [activeTab, setActiveTab] = useState('all');
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+  // Service categories for filters
+  const categories = [
+    { id: 'all', label: 'All Services' },
+    { id: 'security', label: 'Security', services: ['cctv-security', 'digital-security'] },
+    { id: 'computers', label: 'Computers', services: ['computer-repair', 'software-installation', 'data-recovery'] },
+    { id: 'networking', label: 'Networking', services: ['networking', 'smart-home'] },
+    { id: 'maintenance', label: 'Maintenance', services: ['maintenance-contract', 'time-attendance'] }
+  ];
 
   // Service data
   const services = [
-    { 
-      id: 'laptop-repair',
-      icon: <FaLaptop size={40} />, 
-      title: 'Laptop Repair', 
-      description: 'From screen replacements to motherboard fixes, we handle all laptop issues with precision.',
-      longDescription: 'Our expert technicians can repair all brands of laptops including Apple, Dell, HP, Lenovo, ASUS, and more. We specialize in screen replacements, keyboard repairs, battery replacements, water damage recovery, data recovery, and hardware upgrades. All our laptop repairs come with a 90-day warranty.',
+    {
+      id: 'cctv-security',
+      icon: <Camera size={40} />,
+      title: 'CCTV & Security Systems',
+      description: 'Professional installation of CCTV cameras, access control systems, and comprehensive security solutions.',
+      longDescription: 'We provide end-to-end security solutions including CCTV camera installation, access control systems, surveillance setup, and security monitoring. Our systems come with remote viewing capabilities, motion detection, and 24/7 recording options. We work with top brands and provide full training on system usage.',
+      price: 'Starting at $299',
+      timeframe: '2-3 business days',
+      image: '/cctv-security.jpg'
+    },
+    {
+      id: 'computer-repair',
+      icon: <Computer size={40} />,
+      title: 'Computer & Laptop Repair',
+      description: 'Expert repair services for desktops, laptops, and all-in-one computers with quality assurance.',
+      longDescription: 'Our certified technicians handle all types of computer repairs including hardware replacement, software troubleshooting, virus removal, and performance optimization. We service all major brands and provide warranty on parts and labor. Most repairs are completed within 24-48 hours.',
       price: 'Starting at $49',
-      timeframe: '1-3 business days',
-      image: '/laptop-repair.jpg'
-    },
-    { 
-      id: 'phone-repair',
-      icon: <FaMobile size={40} />, 
-      title: 'Phone Repair', 
-      description: 'Cracked screens, battery issues, water damage - we fix it all for most phone brands.',
-      longDescription: 'We repair all major smartphone brands including iPhone, Samsung, Google Pixel, and more. Our services include screen replacements, battery replacements, charging port repairs, camera fixes, and water damage restoration. Most repairs are completed same-day, and we only use high-quality replacement parts.',
-      price: 'Starting at $29',
-      timeframe: 'Same day service available',
-      image: '/phone-repair.jpg'
-    },
-    { 
-      id: 'camera-repair',
-      icon: <FaCamera size={40} />, 
-      title: 'Camera Repair', 
-      description: 'Trust our experts to repair your precious cameras and lenses with care.',
-      longDescription: 'Our camera repair specialists handle DSLR, mirrorless, and professional video cameras from brands like Canon, Nikon, Sony, Fujifilm, and more. Services include lens calibration, sensor cleaning, shutter mechanism repairs, viewfinder fixes, and general servicing. All camera equipment is handled with extreme care in our dust-free environment.',
-      price: 'Starting at $59',
-      timeframe: '3-5 business days',
-      image: '/camera-repair.jpg'
-    },
-    { 
-      id: 'maintenance',
-      icon: <FaTools size={40} />, 
-      title: 'General Maintenance', 
-      description: 'Regular maintenance to keep your devices running smoothly for longer.',
-      longDescription: 'Preventative maintenance can extend the life of your devices and prevent costly repairs. Our maintenance services include deep cleaning, thermal paste application, fan replacement, software optimization, virus removal, and system updates. We recommend annual maintenance for optimal performance.',
-      price: 'Starting at $39',
       timeframe: '1-2 business days',
+      image: '/computer-repair.jpg'
+    },
+    {
+      id: 'maintenance-contract',
+      icon: <Wrench size={40} />,
+      title: 'Annual Maintenance Contract',
+      description: 'Comprehensive AMC services for security systems, computers, and printers to ensure optimal performance.',
+      longDescription: 'Our Annual Maintenance Contracts provide regular maintenance, priority support, and preventive care for your technology infrastructure. Includes quarterly checkups, software updates, hardware cleaning, and discounted repair services. Ideal for businesses and home offices.',
+      price: 'Starting at $299/year',
+      timeframe: 'Quarterly visits',
       image: '/maintenance.jpg'
     },
-    { 
-      id: 'used-laptops',
-      icon: <FaShoppingCart size={40} />, 
-      title: 'Used Laptops', 
-      description: 'Quality refurbished laptops with warranty at affordable prices.',
-      longDescription: 'All our refurbished laptops undergo a rigorous 21-point inspection process. We replace worn components, upgrade where necessary, and ensure each laptop meets our high-quality standards. Every laptop comes with a clean operating system install, necessary drivers, and a 6-month warranty. We carry a wide range of brands and specifications to meet any budget.',
-      price: 'Starting at $299',
-      timeframe: 'Ready for immediate pickup',
-      image: '/used-laptops.jpg'
+    {
+      id: 'smart-home',
+      icon: <Cog size={40} />,
+      title: 'Smart Home Solutions',
+      description: 'Installation of video door phones, smart locks, intercoms, and time & attendance systems.',
+      longDescription: 'Transform your home with our smart home integration services. We install and configure video doorbells, smart locks, automated lighting, climate control systems, and home security solutions. All our installations come with user training and setup support.',
+      price: 'Starting at $199',
+      timeframe: '1-3 business days',
+      image: '/smart-home.jpg'
     },
-    { 
-      id: 'tech-support',
-      icon: <FaHeadset size={40} />, 
-      title: 'Tech Support', 
-      description: 'Professional technical support for all your software and hardware issues.',
-      longDescription: 'Our tech support team can assist with software installations, system configurations, network setup, cloud services, data migration, and general troubleshooting. We offer both one-time support services and ongoing maintenance plans for homes and small businesses. Remote support options are also available.',
-      price: 'Starting at $25/hr',
-      timeframe: 'By appointment',
-      image: '/tech-support.jpg'
+    {
+      id: 'digital-security',
+      icon: <Shield size={40} />,
+      title: 'Digital Security',
+      description: 'Antivirus installation, virus removal, and data recovery services to protect your digital assets.',
+      longDescription: 'Protect your digital life with our comprehensive security solutions. We provide antivirus installation, malware removal, firewall setup, data encryption, and regular security audits. We use industry-leading security software and best practices to keep your data safe.',
+      price: 'Starting at $79',
+      timeframe: 'Same day service',
+      image: '/digital-security.jpg'
     },
+    {
+      id: 'software-installation',
+      icon: <FileCode size={40} />,
+      title: 'Software Installation',
+      description: 'Professional installation of Windows, Mac OS, Linux, and other essential software.',
+      longDescription: 'Our software installation services cover operating systems, productivity suites, specialized applications, and custom software solutions. We ensure proper configuration, updates, and licensing compliance. All installations include basic training and documentation.',
+      price: 'Starting at $59',
+      timeframe: '2-4 hours',
+      image: '/software.jpg'
+    },
+    {
+      id: 'networking',
+      icon: <Wifi size={40} />,
+      title: 'Networking Solutions',
+      description: 'Setup and configuration of Wi-Fi and LAN networks for seamless connectivity.',
+      longDescription: 'Complete networking solutions including Wi-Fi setup, LAN configuration, network security, and troubleshooting. We optimize network performance, set up secure access points, and ensure reliable connectivity throughout your space. Ideal for both home and business environments.',
+      price: 'Starting at $149',
+      timeframe: '1-2 business days',
+      image: '/networking.jpg'
+    },
+    {
+      id: 'data-recovery',
+      icon: <HardDrive size={40} />,
+      title: 'Data Recovery',
+      description: 'Professional data recovery services to retrieve your valuable information from damaged storage devices.',
+      longDescription: 'Our data recovery experts can retrieve lost data from hard drives, SSDs, USB drives, and other storage devices. We handle cases of accidental deletion, drive failure, corruption, and physical damage. All recovery attempts are performed in a clean room environment.',
+      price: 'Starting at $99',
+      timeframe: '2-5 business days',
+      image: '/data-recovery.jpg'
+    },
+    {
+      id: 'time-attendance',
+      icon: <Clock size={40} />,
+      title: 'Time & Attendance Systems',
+      description: 'Implementation of modern time tracking and attendance management solutions.',
+      longDescription: 'Complete time and attendance solutions for businesses of all sizes. We provide biometric systems, card readers, mobile solutions, and cloud-based tracking systems. Includes installation, software setup, user training, and ongoing support.',
+      price: 'Starting at $399',
+      timeframe: '2-3 business days',
+      image: '/time-attendance.jpg'
+    }
   ];
 
-  const filteredServices = activeTab === 'all' ? services : services.filter(service => service.id === activeTab);
+  const handleCategorySelect = (categoryId) => {
+    setActiveTab(categoryId);
+    setIsFilterOpen(false);
+  };
+
+  const filteredServices = activeTab === 'all' 
+    ? services 
+    : services.filter(service => {
+        const category = categories.find(cat => cat.services?.includes(service.id));
+        return category?.id === activeTab || service.id === activeTab;
+      });
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -89,8 +150,7 @@ export default function Services() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* Navbar */}
-      <Navbar/>
+      <Navbar />
 
       {/* Hero Section */}
       <section className="relative h-80 md:h-96 flex items-center justify-center bg-gradient-to-r from-blue-900 to-blue-700 text-white">
@@ -115,36 +175,63 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Service Filter Tabs */}
-      <section className="py-10 bg-white">
+      {/* Mobile Filter Dropdown */}
+      <section className="py-6 bg-white md:hidden">
+        <div className="container mx-auto px-4">
+          <button
+            onClick={() => setIsFilterOpen(!isFilterOpen)}
+            className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg flex items-center justify-between"
+          >
+            <span>Filter Services</span>
+            <ChevronDown className={`transform transition-transform ${isFilterOpen ? 'rotate-180' : ''}`} />
+          </button>
+          
+          {isFilterOpen && (
+            <div className="mt-2 bg-white rounded-lg shadow-lg border border-gray-200">
+              {categories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => handleCategorySelect(category.id)}
+                  className={`w-full px-6 py-3 text-left border-b last:border-b-0 ${
+                    activeTab === category.id ? 'bg-blue-50 text-blue-600' : 'text-gray-700'
+                  }`}
+                >
+                  {category.label}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Desktop Filter Tabs */}
+      <section className="hidden md:block py-10 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="flex overflow-x-auto md:justify-center pb-2 -mx-4 px-4 md:px-0"
+            className="flex flex-wrap justify-center gap-2"
           >
-            <button
-              onClick={() => setActiveTab('all')}
-              className={`px-6 py-3 mx-1 rounded-full transition-colors whitespace-nowrap ${activeTab === 'all' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-800 hover:bg-gray-200'}`}
-            >
-              All Services
-            </button>
-            {services.map((service) => (
+            {categories.map((category) => (
               <button
-                key={service.id}
-                onClick={() => setActiveTab(service.id)}
-                className={`px-6 py-3 mx-1 rounded-full transition-colors whitespace-nowrap ${activeTab === service.id ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-800 hover:bg-gray-200'}`}
+                key={category.id}
+                onClick={() => setActiveTab(category.id)}
+                className={`px-6 py-3 rounded-full transition-colors ${
+                  activeTab === category.id 
+                    ? 'bg-blue-600 text-white' 
+                    : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+                }`}
               >
-                {service.title}
+                {category.label}
               </button>
             ))}
           </motion.div>
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Services Grid */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -203,8 +290,8 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="py-20 bg-white">
+            {/* Process Section */}
+            <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -396,11 +483,11 @@ export default function Services() {
             viewport={{ once: true, margin: "-50px" }}
             className="text-center mt-12"
           >
-            <Link href="/testimonials">
+            {/* <Link href="/testimonials">
               <span className="text-blue-600 font-medium hover:text-blue-800 transition-colors">
                 Read More Testimonials →
               </span>
-            </Link>
+            </Link> */}
           </motion.div>
         </div>
       </section>

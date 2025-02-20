@@ -64,11 +64,11 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-6">Contact Info</h3>
             <ul className="space-y-4 text-gray-400">
-              <li>123 Tech Street, Downtown, NY 10001</li>
-              <li>(555) 123-4567</li>
-              <li>contact@techfixpro.com</li>
+              <li>Shop No. 23, Aakash Tower, 1st Road, Sriprastha, Nalasopara West, Palghar, Maharashtra - 401203</li>
+              <li>+91 7620765998</li>
+              <li>visionovaitsolutions@gmail.com</li>
               <li>Mon - Fri: 9:00 AM - 7:00 PM</li>
-              <li>Sat: 10:00 AM - 5:00 PM</li>
+              {/* <li>Sat: 10:00 AM - 5:00 PM</li> */}
             </ul>
           </div>
         </div>

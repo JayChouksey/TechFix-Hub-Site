@@ -8,7 +8,7 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "TechFix Hub",
+  title: "TechFix Pro",
   description: "Expert Repairs & Quality Pre-Owned Devices",
   icons: {
     icon: "/favicon.ico"

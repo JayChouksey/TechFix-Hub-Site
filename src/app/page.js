@@ -6,10 +6,69 @@ import { motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 
 // Icons
-import { FaLaptop, FaCamera, FaTools, FaHeadset, FaMobile, FaShoppingCart, FaCheck } from 'react-icons/fa';
+import { FaCheck } from 'react-icons/fa';
+import { 
+  Camera,
+  Computer,
+  Shield,
+  Wifi,
+  HardDrive,
+  Wrench,
+  FileCode,
+  Clock,
+  Cog
+} from 'lucide-react';
 import Footer from './components/Footer';
 
 export default function Home() {
+  // Services data
+  const services = [
+    {
+      icon: <Camera size={40} />,
+      title: 'CCTV & Security Systems',
+      description: 'Professional installation of CCTV cameras, access control systems, and comprehensive security solutions.'
+    },
+    {
+      icon: <Computer size={40} />,
+      title: 'Computer & Laptop Repair',
+      description: 'Expert repair services for desktops, laptops, and all-in-one computers with quality assurance.'
+    },
+    {
+      icon: <Wrench size={40} />,
+      title: 'Annual Maintenance Contract',
+      description: 'Comprehensive AMC services for security systems, computers, and printers to ensure optimal performance.'
+    },
+    {
+      icon: <Cog size={40} />,
+      title: 'Smart Home Solutions',
+      description: 'Installation of video door phones, smart locks, intercoms, and time & attendance systems.'
+    },
+    {
+      icon: <Shield size={40} />,
+      title: 'Digital Security',
+      description: 'Antivirus installation, virus removal, and data recovery services to protect your digital assets.'
+    },
+    {
+      icon: <FileCode size={40} />,
+      title: 'Software Installation',
+      description: 'Professional installation of Windows, Mac OS, Linux, and other essential software.'
+    },
+    {
+      icon: <Wifi size={40} />,
+      title: 'Networking Solutions',
+      description: 'Setup and configuration of Wi-Fi and LAN networks for seamless connectivity.'
+    },
+    {
+      icon: <HardDrive size={40} />,
+      title: 'Data Recovery',
+      description: 'Professional data recovery services to retrieve your valuable information from damaged storage devices.'
+    },
+    {
+      icon: <Clock size={40} />,
+      title: 'Time & Attendance Systems',
+      description: 'Implementation of modern time tracking and attendance management solutions.'
+    }
+  ];
   return (
     <div className="min-h-screen bg-gray-50">
       <Head>
@@ -78,18 +137,13 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Expert Services</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">We provide comprehensive repair and maintenance services for all your tech devices, backed by years of experience and expertise.</p>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              We provide comprehensive technology solutions and maintenance services for businesses and individuals, backed by years of experience and expertise.
+            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { icon: <FaLaptop size={40} />, title: 'Laptop Repair', description: 'From screen replacements to motherboard fixes, we handle all laptop issues with precision.' },
-              { icon: <FaMobile size={40} />, title: 'Phone Repair', description: 'Cracked screens, battery issues, water damage - we fix it all for most phone brands.' },
-              { icon: <FaCamera size={40} />, title: 'Camera Repair', description: 'Trust our experts to repair your precious cameras and lenses with care.' },
-              { icon: <FaTools size={40} />, title: 'General Maintenance', description: 'Regular maintenance to keep your devices running smoothly for longer.' },
-              { icon: <FaShoppingCart size={40} />, title: 'Used Laptops', description: 'Quality refurbished laptops with warranty at affordable prices.' },
-              { icon: <FaHeadset size={40} />, title: 'Tech Support', description: 'Professional technical support for all your software and hardware issues.' },
-            ].map((service, index) => (
+            {services.map((service, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -130,7 +184,7 @@ export default function Home() {
             >
               <div className="relative h-96 rounded-lg overflow-hidden shadow-xl">
                 <Image
-                  src="/tech-repair.jpg"
+                  src="/technician-img.webp"
                   alt="Technician repairing devices"
                   layout="fill"
                   objectFit="cover"
@@ -246,11 +300,11 @@ export default function Home() {
             viewport={{ once: true, margin: "-50px" }}
             className="text-center mt-12"
           >
-            <Link href="/testimonials">
+            {/* <Link href="/testimonials">
               <span className="text-blue-600 font-medium hover:text-blue-800 transition-colors">
                 Read More Testimonials →
               </span>
-            </Link>
+            </Link> */}
           </motion.div>
         </div>
       </section>
@@ -405,19 +459,19 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
-                  123 Tech Street, Downtown, NY 10001
+                  Shop No. 23, Aakash Tower, 1st Road, Sriprastha, Nalasopara West, Palghar, Maharashtra - 401203
                 </p>
                 <p className="flex items-center text-gray-700">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
-                  (555) 123-4567
+                  +91 7620765998
                 </p>
                 <p className="flex items-center text-gray-700">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
-                  contact@techfixpro.com
+                  visionovaitsolutions@gmail.com
                 </p>
               </div>
             </motion.div>
@@ -448,7 +502,7 @@ export default function Home() {
                 </div>
                 <div className="mt-6 p-4 bg-green-50 rounded-lg border border-green-100">
                   <h3 className="text-lg font-semibold text-green-800 mb-2">Emergency Repairs</h3>
-                  <p className="text-green-700">For urgent cases, call our emergency line at (555) 987-6543. Additional fees may apply for after-hours service.</p>
+                  <p className="text-green-700">For urgent cases, call our emergency line at +91 7620765998. Additional fees may apply for after-hours service.</p>
                 </div>
               </div>
             </motion.div>
