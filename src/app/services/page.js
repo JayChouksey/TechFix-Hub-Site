@@ -6,8 +6,8 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import Navbar from '@/app/components/Navbar';
+import Footer from '@/app/components/Footer';
 
 // Icons
 import { FaTools, FaCheck, FaSearch, FaRegClock } from 'react-icons/fa';
@@ -218,8 +218,8 @@ export default function Services() {
                 key={category.id}
                 onClick={() => setActiveTab(category.id)}
                 className={`px-6 py-3 rounded-full transition-colors ${activeTab === category.id
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
                   }`}
               >
                 {category.label}

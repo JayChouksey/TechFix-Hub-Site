@@ -5,8 +5,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { FaFilter, FaSearch, FaLaptop, FaApple, FaWindows, FaAngleDown } from 'react-icons/fa';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import Navbar from '@/app/components/Navbar';
+import Footer from '@/app/components/Footer';
 
 // Sample product data
 const products = [
